@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: yamatch_production
-  username: yamatch
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
