@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # サインアップ（新規登録）の際に、emailとpassword以外に「name」の保存も許可する
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
 
     # アカウント更新（プロフィール編集）の際に、emailとpassword以外に「name」の変更も許可する
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
   end
 end

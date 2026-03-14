@@ -5,5 +5,5 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   # 名前を必須にし、50文字以内にする
-  validates :name, presence :true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 }
 end
