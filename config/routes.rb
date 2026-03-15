@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "pages#top"
+
+  # Deviseのルーティング（これが必須）
+  devise_for :users
 end
