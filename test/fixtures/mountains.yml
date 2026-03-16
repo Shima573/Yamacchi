@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  elevation: 1
+  prefecture: MyString
+  latitude: 9.99
+  longitude: 9.99
+  raw_physical_grade: 1
+  raw_technical_grade: MyString
+  grade_source_prefecture: MyString
+  normalized_physical_score: 1
+  normalized_technical_score: 1
+  has_toilet: false
+  access_detail: MyText
+  image_url: MyString
+
+two:
+  name: MyString
+  elevation: 1
+  prefecture: MyString
+  latitude: 9.99
+  longitude: 9.99
+  raw_physical_grade: 1
+  raw_technical_grade: MyString
+  grade_source_prefecture: MyString
+  normalized_physical_score: 1
+  normalized_technical_score: 1
+  has_toilet: false
+  access_detail: MyText
+  image_url: MyString

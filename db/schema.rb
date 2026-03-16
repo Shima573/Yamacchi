@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_03_14_043611) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_16_061437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mountains", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "elevation"
+    t.string "prefecture"
+    t.decimal "latitude", precision: 9, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
+    t.integer "raw_physical_grade"
+    t.string "raw_technical_grade"
+    t.string "grade_source_prefecture"
+    t.integer "normalized_physical_score"
+    t.integer "normalized_technical_score"
+    t.boolean "has_toilet", default: false, null: false
+    t.text "access_detail"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_mountains_on_name"
+    t.index ["prefecture"], name: "index_mountains_on_prefecture"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
