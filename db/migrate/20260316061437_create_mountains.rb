@@ -22,4 +22,3 @@ class CreateMountains < ActiveRecord::Migration[7.2]
       add_index :mountains, :prefecture
   end
 end
-
