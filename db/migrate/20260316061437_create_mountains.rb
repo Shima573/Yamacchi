@@ -7,7 +7,7 @@ class CreateMountains < ActiveRecord::Migration[7.2]
       t.decimal :latitude, precision: 9, scale: 6
       t.decimal :longitude, precision: 9, scale: 6
       t.integer :raw_physical_grade
-      t.string :raw_technical_grade
+      t.integer :raw_technical_grade, default: 0
       t.string :grade_source_prefecture
       t.integer :normalized_physical_score
       t.integer :normalized_technical_score
@@ -20,5 +20,8 @@ class CreateMountains < ActiveRecord::Migration[7.2]
       # インデックス（検索を速くする設定）も追加
       add_index :mountains, :name
       add_index :mountains, :prefecture
+      # 診断の検索で使用するためインデックスを追加
+      add_index :mountains, :normalized_physical_score
+      add_index :mountains, :normalized_technical_score
   end
 end
