@@ -24,7 +24,7 @@ class Mountain < ApplicationRecord
     if mountains.size < 3
       additional = where(normalized_technical_score: ..diagnosis.recommended_technical_max)
                     .where.not(id: mountains.map(&:id))
-                    .order(Arel.sql('RANDOM()'))
+                    .order(Arel.sql("RANDOM()"))
                     .limit(3 - mountains.size)
       mountains += additional.to_a
     end

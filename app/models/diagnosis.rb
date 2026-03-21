@@ -16,19 +16,19 @@ class Diagnosis < ApplicationRecord
     # 技術計算
     technical_total = q4 + q5
     technical_grade = case technical_total
-                      when 2..4  then 1 # A相当
-                      when 5..7  then 2 # B相当
-                      when 8     then 3 # C相当
-                      when 9     then 4 # D相当
-                      when 10    then 5 # E相当
-                      else 1
-                      end
+    when 2..4  then 1 # A相当
+    when 5..7  then 2 # B相当
+    when 8     then 3 # C相当
+    when 9     then 4 # D相当
+    when 10    then 5 # E相当
+    else 1
+    end
 
     # Diagnosisオブジェクトの作成
     new(
       total_score: (physical_total + technical_total),
-      recommended_physical_min: [(physical_grade - 1), 1].max,
-      recommended_physical_max: [(physical_grade + 1), 10].min,
+      recommended_physical_min: [ (physical_grade - 1), 1 ].max,
+      recommended_physical_max: [ (physical_grade + 1), 10 ].min,
       recommended_technical_max: technical_grade
     )
   end

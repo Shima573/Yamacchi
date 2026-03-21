@@ -1,6 +1,6 @@
 class DiagnosesController < ApplicationController
   # ログインしていなくても診断は可能
-  skip_before_action :authenticate_user!, only: [:new, :create, :show]
+  skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
 
   def new
     # 質問フォームを表示
@@ -18,7 +18,7 @@ class DiagnosesController < ApplicationController
       # 未ログインならセッションにハッシュとして保存
       session[:pending_diagnosis] = @diagnosis.attributes.except("id", "created_at", "updated_at")
       @recommended_mountains = Mountain.recommend_for(@diagnosis)
-      render :show
+      render :show, status: :see_other
     end
   end
 
