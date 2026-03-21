@@ -1,0 +1,113 @@
+<div class="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        診断完了
+      </div>
+      <h1 class="text-4xl font-black text-slate-900 mb-4 tracking-tight">あなたにぴったりの山が見つかりました</h1>
+      <p class="text-slate-500 text-lg">回答いただいた内容に基づき、無理なく楽しめる3つの山を厳選しました。</p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 p-8 mb-12">
+      <h2 class="text-slate-800 font-bold mb-6 flex items-center">
+        <span class="w-1.5 h-6 bg-emerald-500 rounded-full mr-3"></span>
+        あなたの登山適性
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <div class="flex justify-between items-end mb-2">
+            <span class="text-slate-600 font-bold">推奨体力レベル</span>
+            <span class="text-2xl font-black text-emerald-600"><%= @diagnosis.recommended_physical_max %><span class="text-sm text-slate-400 ml-1">/ 10</span></span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: <%= @diagnosis.recommended_physical_max * 10 %>%"></div>
+          </div>
+          <p class="mt-3 text-xs text-slate-400">※回答スコアに基づき、安全に登頂可能な範囲を算出しています。</p>
+        </div>
+        <div>
+          <div class="flex justify-between items-end mb-2">
+            <span class="text-slate-600 font-bold">推奨技術ランク</span>
+            <span class="text-2xl font-black text-amber-500">
+              <%= case @diagnosis.recommended_technical_max
+                  when 1 then 'A' when 2 then 'B' when 3 then 'C' when 4 then 'D' when 5 then 'E'
+                  end %>
+              <span class="text-sm text-slate-400 ml-1">相当</span>
+            </span>
+          </div>
+          <div class="flex gap-1 h-4">
+            <% (1..5).each do |i| %>
+              <div class="flex-1 rounded-sm <%= i <= @diagnosis.recommended_technical_max ? 'bg-amber-400' : 'bg-slate-100' %>"></div>
+            <% end %>
+          </div>
+          <p class="mt-3 text-xs text-slate-400">※A: 初級 〜 E: 超上級（岩場・鎖場の経験に基づく判定）</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-slate-800 mb-8 flex items-center justify-center">
+      おすすめの山リスト
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <% @recommended_mountains.each_with_index do |mountain, index| %>
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col border border-slate-100 relative">
+          <div class="relative h-56 overflow-hidden">
+            <img src="<%= mountain.image_url %>" alt="<%= mountain.name %>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <span class="text-xs font-bold bg-emerald-500 px-2 py-1 rounded mb-1 inline-block"><%= mountain.prefecture %></span>
+              <h3 class="text-xl font-bold"><%= mountain.name %></h3>
+            </div>
+          </div>
+
+          <div class="p-6 flex-grow flex flex-col">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-50 p-3 rounded-2xl text-center">
+                <span class="block text-[10px] text-slate-400 font-bold uppercase">標高</span>
+                <span class="text-sm font-bold text-slate-700"><%= mountain.elevation %>m</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-2xl text-center">
+                <span class="block text-[10px] text-slate-400 font-bold uppercase">難易度</span>
+                <span class="text-sm font-bold text-slate-700">体<%= mountain.raw_physical_grade %> / 技<%= mountain.raw_technical_grade %></span>
+              </div>
+            </div>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-3">
+              <%= mountain.access_detail %>
+            </p>
+
+            <div class="mt-auto">
+              <%= link_to "#", class: "group/btn relative inline-flex items-center justify-center w-full px-6 py-3 font-bold text-slate-700 transition-all duration-200 bg-white border-2 border-slate-200 rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900" do %>
+                <span>詳細を確認する</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="bg-slate-900 rounded-[3rem] p-8 md:p-12 text-center text-white overflow-hidden relative shadow-2xl">
+      <div class="relative z-10">
+        <h3 class="text-2xl md:text-3xl font-bold mb-4 text-emerald-400">お気に入りの山を保存しませんか？</h3>
+        <p class="text-slate-400 mb-8 max-w-lg mx-auto">会員登録すると、診断結果の保存や、登りたい山のリスト作成ができるようになります。</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <% if user_signed_in? %>
+            <%= link_to "マイページへ", "#", class: "px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black rounded-2xl transition-all shadow-lg shadow-emerald-900/20" %>
+          <% else %>
+            <%= link_to "会員登録して保存", new_user_registration_path, class: "px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black rounded-2xl transition-all shadow-lg shadow-emerald-900/20" %>
+            <%= link_to "もう一度診断する", new_diagnosis_path, class: "px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl transition-all backdrop-blur-md" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -top-12 -left-12 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+  </div>
+</div>

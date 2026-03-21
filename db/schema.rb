@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_16_071050) do
     t.decimal "latitude", precision: 9, scale: 6
     t.decimal "longitude", precision: 9, scale: 6
     t.integer "raw_physical_grade"
-    t.string "raw_technical_grade"
+    t.integer "raw_technical_grade", default: 0
     t.string "grade_source_prefecture"
     t.integer "normalized_physical_score"
     t.integer "normalized_technical_score"
@@ -42,6 +42,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_16_071050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_mountains_on_name"
+    t.index ["normalized_physical_score"], name: "index_mountains_on_normalized_physical_score"
+    t.index ["normalized_technical_score"], name: "index_mountains_on_normalized_technical_score"
     t.index ["prefecture"], name: "index_mountains_on_prefecture"
   end
 

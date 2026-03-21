@@ -1,0 +1,205 @@
+<div class="bg-parchment min-h-screen ">
+    <%= form_with url: diagnoses_path, method: :post, local: true do |f| %>
+    <div class="max-w-2xl mx-auto px-5 pt-6 pb-28 flex flex-col gap-5">
+        <!-- 質問1 -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-dark text-xs font-black">Q1</span>
+                </div>
+                <div>
+                    <p class="font-mincho font-black text-gray-800 text-base leading-snug">普段の運動習慣を教えてください</p>
+                    <p class="text-xs text-gray-400 mt-0.5">日常的な身体活動レベルを把握します</p>
+                </div>
+                <span class="ml-auto text-2xl">🏃</span>
+            </div>
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <% [
+                    ['全くしない', 'デスクワーク中心で、1日の歩数も少ない', 1],
+                    ['月に数回', '買い物や通勤で少し歩く、週1回程度の散歩', 2],
+                    ['週に1〜2回', 'ジョギングや軽いスポーツを定期的に行っている', 3],
+                    ['週に3回以上', 'しっかりとしたトレーニングや部活動をしている', 4],
+                    ['毎日激しく運動', '日常的に激しい運動や持久系トレーニングをしている', 5]
+                ].each_with_index do |(label, sub, value), i| %>
+
+                <% id = "q1_#{i}" %>
+
+                <div class="px-4 flex flex-col">
+                    <input type="radio" name="q1" id="<%= id %>" value="<%= value %>" required>
+                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <p class="radio-text text-sm text-gray-700"><%= label %></p>
+                            <p class="text-xs text-gray-400 mt-0.5"><%= sub %></p>
+                        </div>
+                    </label>
+
+                </div>
+
+                <% end %>
+            </div>
+        </div>
+
+        <!-- 質問2 -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-dark text-xs font-black">Q2</span>
+                </div>
+                <div>
+                    <p class="font-mincho font-black text-gray-800 text-base leading-snug">平坦な道を休みなく歩き続けられる時間は？</p>
+                    <p class="text-xs text-gray-400 mt-0.5">舗装された道を、大きな休憩なしで歩く想定です</p>
+                </div>
+                <span class="ml-auto text-2xl">👟</span>
+            </div>
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <% [
+                    ['30分未満', '少し歩くと休憩したくなる、移動は車や電車が主', 1],
+                    ['1時間程度', '近所の公園の散策や、駅1〜2個分なら歩ける', 2],
+                    ['2時間程度', '半日のショッピングや観光地巡りなら平気', 3],
+                    ['3〜4時間', 'ウォーキングイベントや長時間の街歩きも楽しめる', 4],
+                    ['5時間以上', '1日中歩き回るような旅やイベントでも疲れにくい', 5]
+                ].each_with_index do |(label, sub, value), i| %>
+
+                <% id = "q2_#{i}" %>
+
+                <div class="px-4 flex flex-col">
+                    <input type="radio" name="q2" id="<%= id %>" value="<%= value %>" required>
+                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <p class="radio-text text-sm text-gray-700"><%= label %></p>
+                            <p class="text-xs text-gray-400 mt-0.5"><%= sub %></p>
+                        </div>
+                    </label>
+
+                </div>
+
+                <% end %>
+            </div>
+        </div>
+
+        <!-- 質問3 -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-dark text-xs font-black">Q3</span>
+                </div>
+                <div>
+                    <p class="font-mincho font-black text-gray-800 text-base leading-snug">坂道や階段をどの程度登り続けられますか？</p>
+                    <p class="text-xs text-gray-400 mt-0.5">駅の階段やマンションの5階分を登る感覚に近いものです</p>
+                </div>
+                <span class="ml-auto text-2xl">🪜</span>
+            </div>
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <% [
+            ['すぐ息が切れる', '2階分（30段程度）の階段で立ち止まってしまう', 1],
+            ['5階分なら一気に', 'マンションの階段5階分程度ならノンストップでいける', 2],
+            ['15分以上平気', '坂道が続いても、自分のペースを崩さず登れる', 3],
+            ['30分以上平気', '心拍数が上がっても、止まらずに登り続けられる', 4],
+            ['1時間以上平気', '急な登りが長く続く登山道でも、力強く進める', 5]
+        ].each_with_index do |(label, sub, value), i| %>
+                <% id = "q3_#{i}" %>
+                <div class="px-4 flex flex-col">
+                    <input type="radio" name="q3" id="<%= id %>" value="<%= value %>" required>
+                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <p class="radio-text text-sm text-gray-700"><%= label %></p>
+                            <p class="text-xs text-gray-400 mt-0.5"><%= sub %></p>
+                        </div>
+                    </label>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <!-- 質問4 -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-dark text-xs font-black">Q4</span>
+                </div>
+                <div>
+                    <p class="font-mincho font-black text-gray-800 text-base leading-snug">これまでの登山経験を教えてください</p>
+                    <p class="text-xs text-gray-400 mt-0.5">過去1年以内の回数や、登った山の種類を基準にします</p>
+                </div>
+                <span class="ml-auto text-2xl">⛰️</span>
+            </div>
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <% [
+            ['まったくない', '山に登ったことが一度もない、または記憶にない', 1],
+            ['数回程度（低山）', '高尾山など、整備されたハイキングコースを歩いた', 2],
+            ['年数回（中級）', '標高1,000m〜2,000m程度の経験が何度もある', 3],
+            ['月1回以上（本格）', '日帰りだけでなく、宿泊を伴う登山も経験している', 4],
+            ['熟練者レベル', 'アルプス縦走、積雪期、岩場など難度の高い登山を好む', 5]
+        ].each_with_index do |(label, sub, value), i| %>
+                <% id = "q4_#{i}" %>
+                <div class="px-4 flex flex-col">
+                    <input type="radio" name="q4" id="<%= id %>" value="<%= value %>" required>
+                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <p class="radio-text text-sm text-gray-700"><%= label %></p>
+                            <p class="text-xs text-gray-400 mt-0.5"><%= sub %></p>
+                        </div>
+                    </label>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <!-- 質問5 -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-dark text-xs font-black">Q5</span>
+                </div>
+                <div>
+                    <p class="font-mincho font-black text-gray-800 text-base leading-snug">岩場や鎖場のある道を歩いた経験は？</p>
+                    <p class="text-xs text-gray-400 mt-0.5">手を使って登る急斜面や、補助がある道の経験を問います</p>
+                </div>
+                <span class="ml-auto text-2xl">🧗</span>
+            </div>
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <% [
+            ['まったくない', '平坦で、スニーカーでも歩ける道しか経験がない', 1],
+            ['手をつく程度', '少し大きな段差で、バランスを取るために手を使った', 2],
+            ['鎖・ハシゴ経験あり', '設置された鎖やハシゴを使い、慎重に進んだ経験がある', 3],
+            ['難所も何度か', '三点支持が必要な岩場や、高度感のある箇所を通った', 4],
+            ['バリエーション豊富', '険しい岩稜帯や、道迷いしやすいルートも経験済み', 5]
+        ].each_with_index do |(label, sub, value), i| %>
+                <% id = "q5_#{i}" %>
+                <div class="px-4 flex flex-col">
+                    <input type="radio" name="q5" id="<%= id %>" value="<%= value %>" required>
+                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <p class="radio-text text-sm text-gray-700"><%= label %></p>
+                            <p class="text-xs text-gray-400 mt-0.5"><%= sub %></p>
+                        </div>
+                    </label>
+                </div>
+                <% end %>
+            </div>
+        </div>
+
+        <!-- 送信 -->
+        <div data-controller="progress">
+            <div id="progress-note" class="text-center py-1">
+                <p class="text-xs text-gray-400" id="answered-count">0 / 5 問 回答済み</p>
+                <div class="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden max-w-xs mx-auto">
+                </div>
+            </div>
+            <div>
+                <button type="submit" id="submit-btn"
+                    class="w-full py-4 rounded-2xl font-bold text-base tracking-wide
+                    bg-gray-200 text-gray-400 cursor-not-allowed
+                    transition-all duration-300 flex items-center justify-center gap-2"
+                    disabled>
+                    <span id="btn-label">すべての質問に答えてください</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <% end %>
+</div>
