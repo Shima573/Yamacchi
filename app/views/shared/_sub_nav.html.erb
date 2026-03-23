@@ -1,0 +1,40 @@
+<%# 1. アイコンナビゲーション（ヘッダー直下） %>
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-md mx-auto flex">
+      <!-- マイページ (Active) -->
+      <%= link_to profile_path(current_user), class: "flex-1 flex flex-col items-center py-3 border-b-2 border-forest bg-forest-light/20" do %>
+        <span class="text-2xl mb-1 filter drop-shadow-sm">👤</span>
+        <span class="text-[10px] font-bold text-forest">マイページ</span>
+      <% end %>
+
+      <!-- お気に入り -->
+      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
+        <span class="text-2xl mb-1">⭐</span>
+        <span class="text-[10px] font-bold">お気に入り</span>
+      <% end %>
+
+      <!-- 診断 -->
+      <%= link_to new_diagnosis_path, class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
+        <span class="text-2xl mb-1">📋</span>
+        <span class="text-[10px] font-bold">診断</span>
+      <% end %>
+
+      <!-- 記録 -->
+      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
+        <span class="text-2xl mb-1">📊</span>
+        <span class="text-[10px] font-bold">記録</span>
+      <% end %>
+
+      <!-- 山一覧 -->
+      <%= link_to mountains_path, class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
+        <span class="text-2xl mb-1">🏔️</span>
+        <span class="text-[10px] font-bold">山一覧</span>
+      <% end %>
+
+      <!-- 設定 -->
+      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
+        <span class="text-2xl mb-1">⚙️</span>
+        <span class="text-[10px] font-bold">設定</span>
+      <% end %>
+    </div>
+  </nav>

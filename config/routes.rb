@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # get "profiles/show"
-  # get "diagnoses/new"
-  # get "diagnoses/create"
-  # get "diagnoses/show"
+  # Deviseのルーティング（これが必須）
+  devise_for :users
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -19,7 +18,5 @@ Rails.application.routes.draw do
   root "pages#top"
   resources :diagnoses, only: [ :new, :create, :show ]
   resources :profiles, only: [ :show ]
-
-  # Deviseのルーティング（これが必須）
-  devise_for :users
+  resources :mountains, only: [ :index, :show ]
 end
