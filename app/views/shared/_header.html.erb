@@ -1,5 +1,5 @@
 <header id="header" class="scrolled">
-  <%= link_to root_path, class: "logo" do %>
+  <%= link_to (user_signed_in? ? profile_path(current_user) : root_path), class: "logo" do %>
     やま<em>ッチ</em>
   <% end %>
 
