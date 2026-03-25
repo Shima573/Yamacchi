@@ -3,6 +3,11 @@ class MountainsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @has_diagnosis = current_user.diagnoses.exists?
+
+    if @has_diagnosis
+      @recommended_mountains = Mountain.recommend_for(current_user.diagnoses.last)
+    end
   end
 
   def show
