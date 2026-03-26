@@ -27,7 +27,7 @@ export default class extends Controller {
         btn.disabled = false;
         btn.className = btn.className
           .replace('bg-gray-200 text-gray-400 cursor-not-allowed', '')
-          + ' bg-dark text-white cursor-pointer hover:-translate-y-0.5 hover:bg-forest-dark shadow-lg shadow-forest/30';
+          + ' bg-primary-40 text-white cursor-pointer hover:-translate-y-0.5 hover:bg-primary-40 shadow-lg shadow-forest/30';
         lbl.textContent = '診断結果を見る →';
       } else {
         lbl.textContent = `残り ${TOTAL - n} 問あります`;

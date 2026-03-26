@@ -1,16 +1,16 @@
-<div class="min-h-screen bg-parchment">
+<div class="min-h-screen bg-primary-30">
     <div class="mx-auto px-4 pt-8 pb-8">
         <!-- セクション①：メイン「あなたにおすすめ」 -->
-        <section class="max-w-xl mx-auto py-8 px-2 mb-10 bg-dark rounded-3xl relative">
+        <section class="max-w-xl mx-auto py-8 px-2 mb-10 bg-primary-60 rounded-3xl relative">
             <svg class="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice">
-              <path d="M0,100 L120,30 L220,80 L320,10 L420,60 L520,20 L600,50 L600,160 L0,160Z"  fill="white"/>
+            <path d="M0,100 L120,30 L220,80 L320,10 L420,60 L520,20 L600,50 L600,160 L0,160Z"  fill="white"/>
             </svg>
             <div class="flex items-center justify-between mb-3 px-4">
                 <div>
-                    <h2 class="font-mincho font-black text-xl text-parchment flex items-center gap-2">
+                    <h2 class="font-mincho font-black text-xl text-primary-30 flex items-center gap-2">
                         あなたにおすすめ
                     </h2>
-                    <p class="text-xs text-cream font-bold tracking-wider mt-1">RECOMMENDED FOR YOU</p>
+                    <p class="text-xs text-primary-20 font-bold tracking-wider mt-1">RECOMMENDED FOR YOU</p>
                 </div>
             </div>
         </section>
@@ -20,7 +20,7 @@
             <% if  @has_diagnosis%>
             <div class="flex flex-col gap-8 max-w-xl mx-auto ">
                 <% @recommended_mountains.each_with_index do |mountain, index| %>
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col border-2 border-default relative">
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col border-2 border-primary-50 relative">
                     <div class="relative h-56 overflow-hidden">
                         <img src="<%= mountain.image_url %>" alt="<%= mountain.name %>"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -29,7 +29,7 @@
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-xl font-bold font-mincho"><%= mountain.name %></h3>
                             <span
-                                class="text-xs font-bold font-mincho text-thin">📍 <%= mountain.prefecture %></span>
+                                class="text-xs font-bold font-mincho text-primary-80">📍 <%= mountain.prefecture %></span>
                         </div>
                     </div>
 
@@ -37,11 +37,11 @@
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             <div class="bg-slate-50 p-3 rounded-2xl text-center">
                                 <span class="block text-[12px] text-slate-400 font-bold uppercase">標高</span>
-                                <span class="text-base font-bold font-mincho text-dark"><%= mountain.elevation %>m</span>
+                                <span class="text-base font-bold font-mincho text-primary-40"><%= mountain.elevation %>m</span>
                             </div>
                             <div class="bg-slate-50 p-3 rounded-2xl text-center">
                                 <span class="block text-[12px] text-slate-400 font-bold uppercase">難易度</span>
-                                <span class="text-base font-bold font-mincho text-dark">体 <%= mountain.raw_physical_grade %> /
+                                <span class="text-base font-bold font-mincho text-primary-40">体 <%= mountain.raw_physical_grade %> /
                                     技 <%= mountain.raw_technical_grade %></span>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         </p>
 
                         <div class="mt-auto">
-                            <%= link_to "#", class: "group/btn relative inline-flex items-center justify-center w-full px-6 py-3 font-bold text-slate-700 transition-all duration-200 bg-white border-2 border-slate-200 rounded-xl hover:bg-dark hover:text-white hover:border-slate-900" do %>
+                            <%= link_to "#", class: "group/btn relative inline-flex items-center justify-center w-full px-6 py-3 font-bold text-slate-700 transition-all duration-200 bg-white border-2 border-slate-200 rounded-xl hover:bg-primary-40 hover:text-white hover:border-slate-900" do %>
                             <span>詳細を確認する</span>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-1" fill="none"

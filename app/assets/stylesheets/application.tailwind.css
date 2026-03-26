@@ -2,15 +2,29 @@
 @import "./diagnoses.css";
 
 @theme {
-  --color-light: #F7EDD6;
-  --color-cream: #FDFCF8;
-  --color-parchment: #F7F5F0;
-  --color-default: #3D6B4F;
-  --color-dark: #2A4D38;
-  --color-mid: #5A8A6A;
-  --color-thin: #E8F3EC;
-  --color-forest: #001100;
+  --color-primary-10: #F7EDD6;
+  --color-primary-20: #FDFCF8;
+  --color-primary-30: #F7F5F0;
+  --color-primary-40: #2A4D38;
+  --color-primary-50: #5A8A6A;
+  --color-primary-60: #3D6B4F;
+  --color-primary-70: #A8D5B5;
+  --color-primary-80: #E8F3EC;
+  --color-primary-90: #001100;
+  --color-primary-100: #8FAF8B;
+  --color-primary-200: #6B8F71;
+  --color-primary-300: #8B6B4A;
+  --color-primary-400: #8B6914;
 
   --font-sans: 'Noto Sans JP', sans-serif;
   --font-mincho: 'Shippori Mincho B1', serif;
+}
+
+
+/* header */
+.nav-link{
+  @apply px-4 py-1
+}
+.nav-link:hover{
+  @apply bg-primary-20/30 px-4 rounded-3xl
 }
