@@ -1,15 +1,15 @@
-<footer id="footer">
+<footer id="footer" class="flex flex-col items-center gap-2 py-2 text-primary-20 bg-[linear-gradient(to_bottom,var(--color-primary-100),var(--color-primary-600))]">
   <div class="footer-content">
     <div class="footer-links">
-      <div class="link-group">
-        <%= link_to '利用規約', "#", class: 'link' %>
-        <%= link_to 'プライバシーポリシー', "#", class: 'link' %>
-        <%= link_to 'お問い合わせ', "#", class: 'link' %>
+      <div class="link-group flex justify-center gap-2">
+        <%= link_to '利用規約', "#", class: "nav-link" %>
+        <%= link_to 'プライバシーポリシー', "#", class: "nav-link" %>
+        <%= link_to 'お問い合わせ', "#", class: "nav-link" %>
       </div>
     </div>
   </div>
 
-  <div class="footer-bottom">
+  <div class="footer-bottom font-mincho">
     <p>&copy; <%= Time.current.year %> やまッチ. All rights reserved.</p>
   </div>
 </footer>

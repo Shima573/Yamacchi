@@ -1,11 +1,11 @@
-<div class="bg-parchment min-h-screen ">
+<div class="bg-primary-30 min-h-screen ">
     <%= form_with url: diagnoses_path, method: :post, local: true do |f| %>
     <div class="max-w-2xl mx-auto px-5 pt-6 pb-28 flex flex-col gap-5">
         <!-- 質問1 -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
-                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
-                    <span class="font-mincho text-dark text-xs font-black">Q1</span>
+                <div class="w-8 h-8 rounded-full bg-primary-80 flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-primary-40 text-xs font-black">Q1</span>
                 </div>
                 <div>
                     <p class="font-mincho font-black text-gray-800 text-base leading-snug">普段の運動習慣を教えてください</p>
@@ -26,7 +26,7 @@
 
                 <div class="px-4 flex flex-col">
                     <input type="radio" name="q1" id="<%= id %>" value="<%= value %>" required>
-                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                    <label for="<%= id %>" class="bg-primary-20 border-2 border-primary-80 p-4 rounded-2xl radio-label">
                         <div class="radio-dot"></div>
                         <div>
                             <p class="radio-text text-sm text-gray-700"><%= label %></p>
@@ -43,8 +43,8 @@
         <!-- 質問2 -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
-                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
-                    <span class="font-mincho text-dark text-xs font-black">Q2</span>
+                <div class="w-8 h-8 rounded-full bg-primary-80 flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-primary-40 text-xs font-black">Q2</span>
                 </div>
                 <div>
                     <p class="font-mincho font-black text-gray-800 text-base leading-snug">平坦な道を休みなく歩き続けられる時間は？</p>
@@ -65,7 +65,7 @@
 
                 <div class="px-4 flex flex-col">
                     <input type="radio" name="q2" id="<%= id %>" value="<%= value %>" required>
-                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                    <label for="<%= id %>" class="bg-primary-20 border-2 border-primary-80 p-4 rounded-2xl radio-label">
                         <div class="radio-dot"></div>
                         <div>
                             <p class="radio-text text-sm text-gray-700"><%= label %></p>
@@ -82,8 +82,8 @@
         <!-- 質問3 -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
-                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
-                    <span class="font-mincho text-dark text-xs font-black">Q3</span>
+                <div class="w-8 h-8 rounded-full bg-primary-80 flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-primary-40 text-xs font-black">Q3</span>
                 </div>
                 <div>
                     <p class="font-mincho font-black text-gray-800 text-base leading-snug">坂道や階段をどの程度登り続けられますか？</p>
@@ -102,7 +102,7 @@
                 <% id = "q3_#{i}" %>
                 <div class="px-4 flex flex-col">
                     <input type="radio" name="q3" id="<%= id %>" value="<%= value %>" required>
-                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                    <label for="<%= id %>" class="bg-primary-20 border-2 border-primary-80 p-4 rounded-2xl radio-label">
                         <div class="radio-dot"></div>
                         <div>
                             <p class="radio-text text-sm text-gray-700"><%= label %></p>
@@ -116,8 +116,8 @@
         <!-- 質問4 -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
-                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
-                    <span class="font-mincho text-dark text-xs font-black">Q4</span>
+                <div class="w-8 h-8 rounded-full bg-primary-80 flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-primary-40 text-xs font-black">Q4</span>
                 </div>
                 <div>
                     <p class="font-mincho font-black text-gray-800 text-base leading-snug">これまでの登山経験を教えてください</p>
@@ -136,7 +136,7 @@
                 <% id = "q4_#{i}" %>
                 <div class="px-4 flex flex-col">
                     <input type="radio" name="q4" id="<%= id %>" value="<%= value %>" required>
-                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                    <label for="<%= id %>" class="bg-primary-20 border-2 border-primary-80 p-4 rounded-2xl radio-label">
                         <div class="radio-dot"></div>
                         <div>
                             <p class="radio-text text-sm text-gray-700"><%= label %></p>
@@ -150,8 +150,8 @@
         <!-- 質問5 -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
-                <div class="w-8 h-8 rounded-full bg-thin flex items-center justify-center flex-shrink-0">
-                    <span class="font-mincho text-dark text-xs font-black">Q5</span>
+                <div class="w-8 h-8 rounded-full bg-primary-80 flex items-center justify-center flex-shrink-0">
+                    <span class="font-mincho text-primary-40 text-xs font-black">Q5</span>
                 </div>
                 <div>
                     <p class="font-mincho font-black text-gray-800 text-base leading-snug">岩場や鎖場のある道を歩いた経験は？</p>
@@ -170,7 +170,7 @@
                 <% id = "q5_#{i}" %>
                 <div class="px-4 flex flex-col">
                     <input type="radio" name="q5" id="<%= id %>" value="<%= value %>" required>
-                    <label for="<%= id %>" class="bg-cream border-2 border-thin p-4 rounded-2xl radio-label">
+                    <label for="<%= id %>" class="bg-primary-20 border-2 border-primary-80 p-4 rounded-2xl radio-label">
                         <div class="radio-dot"></div>
                         <div>
                             <p class="radio-text text-sm text-gray-700"><%= label %></p>
