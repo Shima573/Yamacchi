@@ -1,12 +1,13 @@
-<header id="header" class="scrolled flex fixed top-0 left-0 w-full h-16 z-50 items-center justify-between p-6 bg-[linear-gradient(to_bottom,var(--color-primary-100),var(--color-primary-200))] text-primary-20">
+<header id="header" class="scrolled flex fixed top-0 left-0 w-full h-16 z-50 items-center justify-between p-8 bg-[linear-gradient(to_bottom,var(--color-primary-100),var(--color-primary-200))] text-primary-20">
   <%= link_to (user_signed_in? ? profile_path(current_user) : root_path), class: "logo" do %>
   <span class="text-xl text-primary-30 font-mincho font-black">
     やま<em class="text-primary-300">ッチ</em>
   </span>
   <% end %>
 
-  <div class="nav-links flex items-center gap-2">
+  <div class="nav-links flex items-center gap-3">
     <% if user_signed_in? %>
+      <%= render 'shared/sub_nav'%>
       <%= link_to edit_user_registration_path, class: "user-icon-link" do %>
         <div class="user-icon">アイコン画像</div>
       <% end %>

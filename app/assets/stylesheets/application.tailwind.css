@@ -30,3 +30,12 @@
 .nav-link:hover{
   @apply bg-primary-20/30 px-4 rounded-3xl
 }
+
+/* アイコンナビ */
+.icon-nav{
+  @apply items-center py-2 px-4 border-b-2 border-transparent text-primary-20
+}
+
+.active {
+  @apply bg-primary-20/50 text-primary-60 rounded-3xl
+}

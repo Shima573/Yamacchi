@@ -1,40 +1,20 @@
 <%# 1. アイコンナビゲーション（ヘッダー直下） %>
-  <nav class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
-    <div class="max-w-md mx-auto flex">
-      <!-- マイページ (Active) -->
-      <%= link_to profile_path(current_user), class: "flex-1 flex flex-col items-center py-3 border-b-2 border-forest bg-forest-light/20" do %>
-        <span class="text-2xl mb-1 filter drop-shadow-sm">👤</span>
-        <span class="text-[10px] font-bold text-forest">マイページ</span>
-      <% end %>
+  <nav class="">
+    <div class="flex">
+      <% nav_items = [
+        { name: "マイページ", path: profile_path(current_user), icon: "👤"},
+        { name: "お気に入り", path: "#", icon: "⭐"},
+        { name: "診断", path: new_diagnosis_path, icon: "📋"},
+        { name: "おすすめの山", path: mountains_path, icon: "🏔️"},
+        { name: "記録", path: "#", icon: "📊"},
+        # { name: "", path: , icon: ""}追加用,
+      ]%>
 
-      <!-- お気に入り -->
-      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
-        <span class="text-2xl mb-1">⭐</span>
-        <span class="text-[10px] font-bold">お気に入り</span>
-      <% end %>
-
-      <!-- 診断 -->
-      <%= link_to new_diagnosis_path, class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
-        <span class="text-2xl mb-1">📋</span>
-        <span class="text-[10px] font-bold">診断</span>
-      <% end %>
-
-      <!-- 記録 -->
-      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
-        <span class="text-2xl mb-1">📊</span>
-        <span class="text-[10px] font-bold">記録</span>
-      <% end %>
-
-      <!-- 山一覧 -->
-      <%= link_to mountains_path, class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
-        <span class="text-2xl mb-1">🏔️</span>
-        <span class="text-[10px] font-bold">山一覧</span>
-      <% end %>
-
-      <!-- 設定 -->
-      <%= link_to "#", class: "flex-1 flex flex-col items-center py-3 border-b-2 border-transparent text-gray-400" do %>
-        <span class="text-2xl mb-1">⚙️</span>
-        <span class="text-[10px] font-bold">設定</span>
+      <% nav_items.each do |item| %>
+        <%= link_to item[:path], class: "icon-nav #{current_page?(item[:path]) ? 'active' : ''} " do %>
+          <span class="text-base mb-1 "><%= item[:icon] %></span>
+          <span class="text-[12px] font-bold "><%= item[:name] %></span>
+        <% end %>
       <% end %>
     </div>
   </nav>
