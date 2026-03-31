@@ -1,9 +1,250 @@
 <%# メインコンテナ：全体を薄いクリーム色にして和の質感を出す %>
-<div class="min-h-screen bg-[#FAF9F6] pb-20">
+<div class="min-h-screen bg-primary-30">
+    <div class="">
+        <%# 山の画像、山名/標高、所在地 %>
+        <section class="max-w-5xl mx-auto md:pt-7">
+            <%# 画像 %>
+            <div class=" relative h-96 md:h-160 ">
+                <img src="<%= @mountain.image_url %>" alt="<%= @mountain.name %>"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 md:rounded-3xl">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:rounded-3xl">
+                </div>
+                <div class="absolute bottom-4 left-4 text-white">
+                    <h3 class="text-3xl md:text-6xl font-bold font-mincho"><%= @mountain.name %></h3>
+                </div>
+            </div>
+        </section>
 
-  <p>
-    山詳細
-  </p>
+        <section class="cover">
+            <%# 情報 %>
+            <div class="">
+                <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">基本情報</span></div>
 
-  </main>
+                <div class=" flex flex-col md:flex-row justify-center gap-3">
+                    <div class="box flex-1 flex flex-col p-5">
+                        <span class="block text-sm text-primary-900">標高</span>
+                        <span class="text-xl">
+                            <%= @mountain.elevation%>
+                            <span class="text-base">m</span>
+                        </span>
+                    </div>
+                    <div class="box flex-1 flex flex-col p-5">
+                        <span class="block text-sm text-primary-900">所在地</span>
+                        <span class="text-xl">
+                            <%= @mountain.prefecture%>
+                        </span>
+                    </div>
+                    <div class="box flex-1 flex flex-col p-5">
+                        <span class="block text-sm text-primary-900">設備</span>
+                        <span class="flex justify-between">
+                            <p>🚻トイレ</p>
+                            <%= toilet_label(@mountain) %>
+                        </span>
+                    </div>
+                    <div class="box flex-1 flex flex-col p-5">
+                        <span class="block text-sm text-primary-900">登山適期</span>
+                        <span>
+                            後日実装予定
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%# 難易度、 グレーディングの簡易説明 %>
+        <section class="cover">
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">あなたの診断スコア</span></div>
+            <div class="box p-4">
+                <% if @diagnosis %>
+                <%= render "shared/diagnosis_score", diagnosis: @diagnosis %>
+                <% else %>
+                <div class="">
+                    <p class="">相性診断後に自身のスコアが表示されます</p>
+                </div>
+                <% end %>
+            </div>
+        </section>
+        <section class="cover">
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">山の難易度</span></div>
+            <div class="box p-4">
+                <div class="grid grid-cols-1 gap-7">
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="text-slate-600 font-bold">推定体力レベル</span>
+                            <span class="text-2xl font-black text-primary-50"><%= @mountain.raw_physical_grade %><span
+                                    class="text-sm text-primary-90 ml-1">/ 10</span></span>
+                        </div>
+                        <div class="w-full bg-primary-90/10 rounded-full h-4 overflow-hidden">
+                            <div class="bg-primary-50 h-full rounded-full transition-all duration-1000"
+                                style="width: <%= @mountain.raw_physical_grade * 10 %>%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="text-slate-600 font-bold">推定技術ランク</span>
+                            <span class="text-2xl font-black text-primary-800">
+                                <%= @mountain.raw_technical_grade %>
+                                <span class="text-sm text-primary-90 ml-1">相当</span>
+                            </span>
+                        </div>
+                        <div class="flex gap-1 h-4">
+                            <% (1..5).each do |i| %>
+                            <div
+                                class="flex-1 rounded-sm <%= i <= @mountain.technical_rank_score ? 'bg-primary-800' : 'bg-primary-90/10' %>">
+                            </div>
+                            <% end %>
+                        </div>
+                        <p class="mt-3 text-xs text-primary-900">※A: 初級 〜 E: 超上級（岩場・鎖場の経験に基づく判定）</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="cover">
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">山のグレーディングについて</span></div>
+            <details class="box p-4">
+                <summary class="cursor-pointer">グレーディングについて</summary>
+                <div class="md:ml-4">
+                    <details>
+                        <summary class="cursor-pointer">体力度について</summary>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">1〜2（日帰り可能）：</span>
+                                <p class="">初心者向け。短時間で無理なく登れる。</p>
+                            </div>
+                            <p class="grading-sup">・初心者や、まずは体力作りから始めたい人向け。</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">3〜5（1泊以上）：</span>
+                                <p class="">中級者向け。ある程度の体力が必要。</p>
+                            </div>
+                            <p class="grading-sup">・荷物を背負って長時間歩けるかが目安</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">6〜10（2泊以上）：</span>
+                                <p class="">上級者向け。長距離・長時間行動。</p>
+                            </div>
+                            <p class="grading-sup">・持久力と計画的な行動が必要</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="md:ml-4">
+                    <details>
+                        <summary class="cursor-pointer">技術度について</summary>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">A：</span>
+                                <p class="">整備された登山道が中心。</p>
+                            </div>
+                            <p class="grading-sup">・初心者でも概ね安心して歩ける</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">B：</span>
+                                <p class="">急な登降や分かりにくい道あり。</p>
+                            </div>
+                            <p class="grading-sup">・地図確認や基本的な登山経験が必要</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">C：</span>
+                                <p class="">鎖場・岩場あり。</p>
+                            </div>
+                            <p class="grading-sup">・三点支持や高度感への慣れが必要</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">D：</span>
+                                <p class="">厳しい岩場・ガレ場が連続。</p>
+                            </div>
+                            <p class="grading-sup">・ルート判断と安定した足運びが必要</p>
+                        </div>
+                        <div class="grading">
+                            <div class="grading-content">
+                                <span class="grading-item">E：</span>
+                                <p class="">危険箇所が連続する上級者向け。</p>
+                            </div>
+                            <p class="grading-sup">・高度な技術と十分な経験が前提</p>
+                        </div>
+                    </details>
+                </div>
+                <!-- 注意事項 -->
+                <div class="mt-4 border-t pt-3">
+                    <p class="text-xs text-primary-900">
+                        ※本グレーディングはあくまで目安としてご利用ください。登山道の通行や山頂への到達、安全を保証するものではありません。
+                    </p>
+                    <p class="mt-1 text-xs text-primary-900">
+                        不安がある場合は、1段階低い難易度を選ぶことをおすすめします。
+                    </p>
+                    <p class="mt-1 text-xs text-primary-900">
+                        詳細な基準については
+                        <a href="https://www.pref.nagano.lg.jp/kankoki/sangyo/kanko/gure-dexingu.html"
+                            class="underline text-primary-60" target="_blank rel="noopener noreferrer>長野県のグレーディング</a>
+                        をご確認ください。
+                    </p>
+                </div>
+            </details>
+        </section>
+        <%# 山の紹介文 %>
+        <section class="cover">
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">山の物語</span></div>
+            <div class="text-center font-mincho">
+                <%# wikiを参考予定 %>
+                <p class="">
+                    <%= @mountain.prefecture %>に位置する
+                    標高<%= @mountain.elevation %>mの山
+                </p>
+            </div>
+        </section>
+        <%# アクセス・周辺情報 %>
+        <section class="cover">
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">アクセス・周辺情報</span></div>
+            <!-- アクセス -->
+            <div class="box wa-card p-6 mb-5">
+                <h3 class="font-mincho text-base mb-5 flex items-center gap-2" style="color:var(--sumi)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                        stroke="var(--color-primary-700)" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
+                        <path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    </svg>
+                    登山口へのアクセス
+                </h3>
+
+                <div class="space-y-4">
+                    <div class="spot-card">
+                        <p class="text-xs text-primary-700 tracking-widest mb-1">🚌 公共交通機関</p>
+                        <p class="text-sm text-primary-90 leading-7">
+                            <%= @mountain.access_detail %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%# 注意事項 %>
+        <section class="cover">
+          <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">登山前の確認事項</span></div>
+            <div class="box p-4 max-w-xl mx-auto">
+                <div class="flex items-center gap-3 pb-2">
+                    <div class="w-8 h-7 bg-primary-800/30 border border-primary-800 rounded-lg text-center">⚠️</div>
+                    <div class="font-bold text-primary-800">登山前に確認してください</div>
+                </div>
+                <ul class="ml-6 list-disc tracking-wider text-sm text-primary-700">
+                    <li>天候が悪化した場合は無理せず撤退する勇気を持ちましょう。</li>
+                    <li>当日の体調が優れない場合は、計画を延期することも選択肢です。</li>
+                    <li>山頂は気温が下がります。重ね着できる服装を準備してください。</li>
+                    <li>下山時は膝への負担が増えます。ゆっくりペースを守りましょう。</li>
+                </ul>
+                <div class="p-1.5 mt-2 bg-primary-1000/10 border border-primary-1000 rounded-lg text-xs text-primary-1000">
+                    ⚠️ 本アプリの診断はあくまで目安です。<br> 実際の登山においては、当日の天候・体調・現地状況を必ずご自身でご確認ください。
+                </div>
+            </div>
+        </section>
+    </div>
+
 </div>

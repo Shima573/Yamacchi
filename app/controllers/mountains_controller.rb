@@ -11,5 +11,7 @@ class MountainsController < ApplicationController
   end
 
   def show
+    @mountain = Mountain.find(params[:id])
+    @diagnosis = current_user.diagnoses.last
   end
 end

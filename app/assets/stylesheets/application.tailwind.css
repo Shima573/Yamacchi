@@ -14,9 +14,14 @@
   --color-primary-100: #8FAF8B;
   --color-primary-200: #6B8F71;
   --color-primary-300: #8B6B4A;
-  --color-primary-400: #8B6914;
+  --color-primary-400: #556B2F;
   --color-primary-500: #839b8a;
   --color-primary-600: #81a78c;
+  --color-primary-700: #b8924a;
+  --color-primary-800: #F4A460;
+  --color-primary-900: #708090;
+  --color-primary-1000: #FF6347;
+
 
   --font-sans: 'Noto Sans JP', sans-serif;
   --font-mincho: 'Shippori Mincho B1', serif;
@@ -78,3 +83,43 @@ html {
 .active {
   @apply bg-primary-20/50 text-primary-60 rounded-3xl
 }
+
+/* 山の詳細 */
+  /* ============ 仕切り線 ============ */
+  .kamon-rule {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: var(--color-primary-700);
+  }
+  .kamon-rule::before,
+  .kamon-rule::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background: linear-gradient(to right, transparent, var(--color-primary-700) 40%, transparent);
+  }
+
+  .box {
+    @apply border-3 border-double border-primary-700 relative bg-primary-10/40
+    font-mincho
+  }
+
+  .cover {
+    @apply max-w-4xl mx-auto pt-10 pb-10 px-7
+  }
+
+  .grading{
+    @apply border-l-2 border-primary-400 md:ml-6 mb-1.5 pl-2
+  }
+
+  .grading-content{
+    @apply md:flex text-sm
+  }
+
+  .grading-item{
+    @apply text-primary-400 font-bold
+  }
+  .grading-sup{
+    @apply text-xs text-primary-900
+  }
