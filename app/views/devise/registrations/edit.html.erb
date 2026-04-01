@@ -30,6 +30,12 @@
     <p><%= f.password_field :current_password, autocomplete: "current-password" %></p>
   </div>
 
+  <%# icon画像 %>
+  <div class="">
+    <p><%= f.label :avetar %></p>
+    <p class=""><%= f.file_field :avatar, autocomplete: "icon" %></p>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

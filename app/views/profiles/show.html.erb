@@ -3,6 +3,11 @@
   <p>
     マイページ
   </p>
+  <div class="bg-primary-40 p-8">
+    <%= image_tag @user.avatar if @user.avatar.attached? %>
+  </div>
+
+
 
   </main>
 </div>
