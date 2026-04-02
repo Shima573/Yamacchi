@@ -40,8 +40,8 @@ gem "image_processing", "~> 1.2"
 
 gem "active_storage_validations"
 
-gem 'cloudinary'
-gem 'activestorage-cloudinary-service'
+gem "cloudinary"
+gem "activestorage-cloudinary-service"
 
 gem "devise"
 
