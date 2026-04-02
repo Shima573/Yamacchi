@@ -123,3 +123,9 @@ html {
   .grading-sup{
     @apply text-xs text-primary-900
   }
+
+
+  .text-field input {
+    @apply border-2 border-primary-50 rounded-lg py-2 pl-2
+    bg-primary-30 w-full
+  }

@@ -15,6 +15,11 @@
             <%= @user.name %>
         </div>
 
+        <%# 編集 %>
+        <div class="box w-40 p-2 text-center">
+            <%= link_to "プロフィール編集", edit_profile_path, class: "btn" %>
+        </div>
+
         <%# 診断スコア %>
         <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">あなたの診断スコア</span></div>
         <div class="box p-4">

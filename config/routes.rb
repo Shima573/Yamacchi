@@ -17,6 +17,6 @@ Rails.application.routes.draw do
 
   root "pages#top"
   resources :diagnoses, only: [ :new, :create, :show ]
-  resources :profiles, only: [ :show ]
+  resource :profile, only: [ :show, :edit, :update ]
   resources :mountains, only: [ :index, :show ]
 end
