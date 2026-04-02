@@ -9,5 +9,25 @@ class ProfilesController < ApplicationController
 
     # 今後、診断履歴（@diagnoses）や
     # お気に入り（@favorite_mountains）をここで取得するように拡張できる
+    @diagnosis = current_user.diagnoses.last
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(profile_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def profile_params
+    params.require(:user).permit(:name, :email, :avatar)
   end
 end

@@ -4,7 +4,7 @@
 @theme {
   --color-primary-10: #F7EDD6;
   --color-primary-20: #FDFCF8; /*文字の基本カラー*/
-  --color-primary-30: #F7F5F0;
+  --color-primary-30: #F7F5F0; /*main背景色*/
   --color-primary-40: #2A4D38;
   --color-primary-50: #5A8A6A;
   --color-primary-60: #3D6B4F;
@@ -122,4 +122,10 @@ html {
   }
   .grading-sup{
     @apply text-xs text-primary-900
+  }
+
+
+  .text-field input {
+    @apply border-2 border-primary-50 rounded-lg py-2 pl-2
+    bg-primary-30 w-full
   }

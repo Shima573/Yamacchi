@@ -1,0 +1,24 @@
+<div class="min-h-screen">
+    <h1 class="cover font-mincho text-4xl">プロフィール編集</h1>
+    <div class="cover box">
+        <%= form_with model: @user, url: profile_path do |f| %>
+        <div class="pb-4">
+            <p class="text-lg pb-2"><%= f.label :name %></p>
+            <p class="text-field"><%= f.text_field :name %></p>
+        </div>
+        <div class="pb-4">
+            <p class="text-lg pb-2"><%= f.label :email %></p>
+            <p class="text-field"><%= f.text_field :email %></p>
+        </div>
+        <div class="pb-4">
+            <p class="text-lg pb-2"><%= f.label :avatar %></p>
+            <div class="text-field"><%= f.file_field :avatar, class: "cursor-pointer" %></div>
+        </div>
+
+        <div class="">
+            <%= f.submit "更新する",
+            class: "w-30 bg-primary-60 text-primary-20 font-bold text-sm md:text-base px-7 py-4 rounded-full shadow-xl cursor-pointer transition-all tracking-wide" %>
+        </div>
+        <% end %>
+    </div>
+</div>

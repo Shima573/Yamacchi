@@ -1,13 +1,40 @@
 <%# メインコンテナ：全体を薄いクリーム色にして和の質感を出す %>
-<div class="min-h-screen bg-[#FAF9F6] pb-20">
-  <p>
-    マイページ
-  </p>
-  <div class="bg-primary-40 p-8">
-    <%= image_tag @user.avatar if @user.avatar.attached? %>
-  </div>
+<div class="min-h-screen">
+    <div class="cover">
+        <%# アイコン画像 %>
+        <div class="flex justify-center">
+            <% if @user.avatar.attached? %>
+            <%= cl_image_tag(@user.avatar.key, width: 150, height: 150, crop: :fit, radius: :max ) %>
+            <% else %>
+            <%= image_tag "default_wagashi_icon.png", class: "rounded-full opacity-50" %>
+            <% end %>
+        </div>
 
+        <%# ユーザー名 %>
+        <div class="p-6 text-center font-mincho text-3xl ">
+            <%= @user.name %>
+        </div>
 
+        <%# 編集 %>
+        <div class="box w-40 p-2 text-center">
+            <%= link_to "プロフィール編集", edit_profile_path, class: "btn" %>
+        </div>
 
-  </main>
+        <%# 診断スコア %>
+        <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">あなたの診断スコア</span></div>
+        <div class="box p-4">
+            <% if @diagnosis %>
+                <%= render "shared/diagnosis_score", diagnosis: @diagnosis %>
+            <% else %>
+            <div class="">
+                <p class="">相性診断後に自身のスコアが表示されます</p>
+            </div>
+            <% end %>
+        </div>
+        <%# 随時追加予定 %>
+        <div class="">
+            <p>機能は随時追加予定</p>
+        </div>
+    </div>
+
 </div>
