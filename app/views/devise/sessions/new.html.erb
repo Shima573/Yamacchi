@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<div class="min-h-screen">
+    <div class="cover">
+        <div class="text-center text-black font-mincho py-6">
+            <h1 class="text-3xl">ログイン</h1>
+        </div>
+        <div class="box px-6 py-9 rounded-3xl max-w-xl mx-auto">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%# メールアドレス %>
+            <div class="text-field pb-6">
+                <p><%= f.label :email %></p>
+                <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+            </div>
+            <%# パスワード %>
+            <div class="text-field pb-4" data-controller="password">
+                <p><%= f.label :password %></p>
+                <p><%= f.password_field :password, autocomplete: "current-password", data: { password_target: "input" } %>
+                </p>
+                <button type="button" data-action="click->password#toggle" data-password-target="button"
+                    class="mt-1 text-xs text-primary-20 font-bold bg-primary-50 px-2 py-1 rounded border border-primary-200 hover:bg-primary-100 transition-colors">
+                    表示
+                </button>
+            </div>
+            <%# ログイン状態の保持 %>
+            <% if devise_mapping.rememberable? %>
+            <div class="field pb-6">
+                <p><%= f.check_box :remember_me %></p>
+                <p><%= f.label :remember_me %></p>
+            </div>
+            <% end %>
+            <%# ログインボタン %>
+            <div
+                class="actions items-center justify-center w-full px-6 py-3 font-bold text-center text-slate-700 transition-all duration-200 bg-white border-2 border-slate-200 rounded-xl hover:bg-primary-500 hover:text-white hover:border-primary-500">
+                <%= f.submit "Log in" %>
+            </div>
+            <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
-  </div>
+            <%# 新規登録 %>
+            <div class="text-center pt-6">
+                <%= link_to new_user_registration_path, class: 'text-black hover:text-primary-100 duration-300' do %>
+                <span>新規登録はこちら</span>
+                <% end %>
+            </div>
+        </div>
 
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password, autocomplete: "current-password" %></p>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <p><%= f.check_box :remember_me %></p>
-      <p><%= f.label :remember_me %></p>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

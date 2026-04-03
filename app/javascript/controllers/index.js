@@ -10,5 +10,8 @@ application.register("header", HeaderController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PasswordController from "./password_controller"
+application.register("password", PasswordController)
+
 import ProgressController from "./progress_controller"
 application.register("progress", ProgressController)
