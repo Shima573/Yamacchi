@@ -21,11 +21,9 @@
             <% if  @has_diagnosis%>
             <div class="flex flex-col gap-8 max-w-xl mx-auto ">
                 <% @recommended_mountains.each_with_index do |mountain, index| %>
-                <div
-                    class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col border-2 border-primary-50 relative">
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col border-2 border-primary-50 relative">
                     <div class="relative h-56 overflow-hidden">
-                        <img src="<%= mountain.image_url %>" alt="<%= mountain.name %>"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <%= image_tag mountain_image(mountain), class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" %>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-4 left-4 text-white">

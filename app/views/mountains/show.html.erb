@@ -5,11 +5,8 @@
         <section class="max-w-5xl mx-auto md:pt-7">
             <%# 画像 %>
             <div class=" relative h-96 md:h-160 ">
-                <img src="<%= @mountain.image_url %>" alt="<%= @mountain.name %>"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 md:rounded-3xl">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:rounded-3xl">
-                </div>
+                <%= image_tag mountain_image(@mountain), class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-3xl" %>
+
                 <div class="absolute bottom-4 left-4 text-white">
                     <h3 class="text-3xl md:text-6xl font-bold font-mincho"><%= @mountain.name %></h3>
                 </div>
@@ -111,14 +108,14 @@
                         <summary class="cursor-pointer">体力度について</summary>
                         <div class="grading">
                             <div class="grading-content">
-                                <span class="grading-item">1〜2（日帰り可能）：</span>
+                                <span class="grading-item">1〜3（日帰り可能）：</span>
                                 <p class="">初心者向け。短時間で無理なく登れる。</p>
                             </div>
                             <p class="grading-sup">・初心者や、まずは体力作りから始めたい人向け。</p>
                         </div>
                         <div class="grading">
                             <div class="grading-content">
-                                <span class="grading-item">3〜5（1泊以上）：</span>
+                                <span class="grading-item">4〜5（1泊以上）：</span>
                                 <p class="">中級者向け。ある程度の体力が必要。</p>
                             </div>
                             <p class="grading-sup">・荷物を背負って長時間歩けるかが目安</p>
@@ -228,7 +225,7 @@
         </section>
         <%# 注意事項 %>
         <section class="cover">
-          <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">登山前の確認事項</span></div>
+            <div class="kamon-rule mb-8"><span class="font-mincho text-xs tracking-[0.3em]">登山前の確認事項</span></div>
             <div class="box p-4 max-w-xl mx-auto">
                 <div class="flex items-center gap-3 pb-2">
                     <div class="w-8 h-7 bg-primary-800/30 border border-primary-800 rounded-lg text-center">⚠️</div>
@@ -240,7 +237,8 @@
                     <li>山頂は気温が下がります。重ね着できる服装を準備してください。</li>
                     <li>下山時は膝への負担が増えます。ゆっくりペースを守りましょう。</li>
                 </ul>
-                <div class="p-1.5 mt-2 bg-primary-1000/10 border border-primary-1000 rounded-lg text-xs text-primary-1000">
+                <div
+                    class="p-1.5 mt-2 bg-primary-1000/10 border border-primary-1000 rounded-lg text-xs text-primary-1000">
                     ⚠️ 本アプリの診断はあくまで目安です。<br> 実際の登山においては、当日の天候・体調・現地状況を必ずご自身でご確認ください。
                 </div>
             </div>

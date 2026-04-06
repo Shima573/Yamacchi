@@ -25,7 +25,7 @@ mountains_data = [
     grade_source_prefecture: "東京都",
     has_toilet: true,
     access_detail: "京王線高尾山口駅から徒歩すぐ。観光客も多く非常に登りやすい。",
-    image_url: "https://placehold.jp/24/cccccc/ffffff/400x300.png?text=高尾山"
+    image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775450915/%E9%AB%98%E5%B0%BE%E5%B1%B1_obfsn8.jpg"
   },
   {
     name: "筑波山",
@@ -38,7 +38,7 @@ mountains_data = [
     grade_source_prefecture: "茨城県",
     has_toilet: true,
     access_detail: "つくばエクスプレスつくば駅からシャトルバス。岩場があり登りごたえがある。",
-    image_url: "https://placehold.jp/24/cccccc/ffffff/400x300.png?text=筑波山"
+    image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775456391/%E7%AD%91%E6%B3%A2%E5%B1%B1_r4zucm.jpg"
   },
   {
     name: "槍ヶ岳",
@@ -51,7 +51,7 @@ mountains_data = [
     grade_source_prefecture: "長野県",
     has_toilet: true,
     access_detail: "北アルプスのシンボル。長い歩行距離と急峻な梯子・鎖場がある。",
-    image_url: "https://placehold.jp/24/cccccc/ffffff/400x300.png?text=槍ヶ岳"
+    image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775454887/%E6%A7%8D%E3%83%B6%E5%B2%B3_p5xh30.jpg"
   }
 ]
 

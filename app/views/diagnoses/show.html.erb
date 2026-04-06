@@ -28,8 +28,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <% @recommended_mountains.each do |mountain| %>
             <div class="box rounded-2xl">
-                <div class="text-center">
-                    <img src="<%= mountain.image_url %>" alt="<%= mountain.name %>" class="">
+                <div class="text-center aspect-[4/3]">
+                    <%= image_tag mountain_image(mountain), class: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-2xl" %>
                     <div class=""></div>
                     <div class="p-2">
                         <span
