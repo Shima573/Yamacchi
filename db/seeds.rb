@@ -9,7 +9,6 @@
 #   end
 # 既存データの削除
 puts "Cleaning up database..."
-Mountain.destroy_all
 
 puts "Creating mountains based on Raw Data (Automatic normalization)..."
 
@@ -84,7 +83,9 @@ mountains_data = [
 mountains_data.each do |data|
   # normalized_... スコアを明示的に書かなくても、
   # 保存時(create!)にモデルの before_save が動いて自動計算されます
-  Mountain.create!(data)
+  mountain = Mountain.find_or_initialize_by(name:data[:name])
+  mountain.assign_attributes(data)
+  mountain.save!
 end
 
 puts "Success: Created #{Mountain.count} mountains!"
