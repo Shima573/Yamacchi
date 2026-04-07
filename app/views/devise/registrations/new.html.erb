@@ -4,7 +4,9 @@
             <h1 class="text-3xl">新規登録</h1>
         </div>
         <%# エラーメッセージ %>
+        <div class="text-center text-red-500">
         <%= render "devise/shared/error_messages", resource: resource %>
+        </div>
         <div class="box px-6 py-9 rounded-3xl max-w-xl mx-auto">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%# 名前 %>
@@ -21,7 +23,7 @@
             <div class="text-field pb-4" data-controller="password">
                 <p><%= f.label :password %></p>
                 <% if @minimum_password_length %>
-                <p><em>(<%= @minimum_password_length %> characters minimum)</em></p>
+                <p><em>(<%= @minimum_password_length %>文字以上)</em></p>
                 <% end %>
                 <p><%= f.password_field :password, autocomplete: "new-password", data: { password_target: "input" } %>
                 </p>
