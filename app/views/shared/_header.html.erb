@@ -34,7 +34,7 @@
     </div>
     <% else %>
     <%# ログイン前 %>
-    <div class=" md:flex flex-col md:flex-row md:static nav-links justify-between md:items-center gap-3 md:w-auto">
+    <div class="md:flex md:flex-row md:static nav-links justify-between md:items-center gap-3 md:w-auto">
         <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
         <%= link_to "相性診断をする", new_diagnosis_path, class: "nav-cta font-blok rounded-3xl px-4 py-1 transition-transform duration-300 hover:-translate-y-1 hidden md:block" %>
     </div>

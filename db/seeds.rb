@@ -41,6 +41,32 @@ mountains_data = [
     image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775456391/%E7%AD%91%E6%B3%A2%E5%B1%B1_r4zucm.jpg"
   },
   {
+    name: "月山",
+    elevation: 1984,
+    prefecture: "山形県",
+    latitude: 38.3256,
+    longitude: 140.0137,
+    raw_physical_grade: 3,
+    raw_technical_grade: "A",
+    grade_source_prefecture: "山形県",
+    has_toilet: true,
+    access_detail: "バス：西川町営バス姥沢バス停、または庄内交通月山八合目バス停",
+    image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775454870/%E6%9C%88%E5%B1%B1_z9hiuh.jpg"
+  },
+  {
+    name: "陣場山",
+    elevation: 854,
+    prefecture: "神奈川県",
+    latitude: 35.3908,
+    longitude: 139.1000,
+    raw_physical_grade: 2,
+    raw_technical_grade: "A",
+    grade_source_prefecture: "神奈川県",
+    has_toilet: true,
+    access_detail: "JR高尾駅から「陣馬高原下」行きバス、またはJR藤野駅から「陣馬登山口」行きバスを利用してアクセスできます",
+    image_url: "https://res.cloudinary.com/ds1c7hp4c/image/upload/v1775454880/%E9%99%A3%E5%A0%B4%E5%B1%B1_kfermj.jpg"
+  },
+  {
     name: "槍ヶ岳",
     elevation: 3180,
     prefecture: "長野県",
