@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_01_021543) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_12_095949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_01_021543) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "cable_car"
+    t.string "name_kana"
+    t.text "narrative"
+    t.string "main_course"
     t.index ["name"], name: "index_mountains_on_name"
     t.index ["normalized_physical_score"], name: "index_mountains_on_normalized_physical_score"
     t.index ["normalized_technical_score"], name: "index_mountains_on_normalized_technical_score"
@@ -85,6 +89,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_01_021543) do
     t.string "avatar_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prefecture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
