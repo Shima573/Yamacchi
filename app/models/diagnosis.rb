@@ -32,4 +32,10 @@ class Diagnosis < ApplicationRecord
       recommended_technical_max: technical_grade
     )
   end
+
+  # ユーザーの体力レベル（1〜10）を10倍してスコア（10〜100）に変換
+  def target_physical_score
+    # minとmaxから計算
+    (recommended_physical_min + recommended_physical_max) * 5
+  end
 end
