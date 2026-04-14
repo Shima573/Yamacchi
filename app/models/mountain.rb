@@ -25,6 +25,7 @@ class Mountain < ApplicationRecord
     easy = []
     challenge = []
 
+    # 山を「おすすめの種類ごと」に仕分けしている処理
     mountains.each do |mountain|
       case mountain.recommendation_type(diagnosis)
       when :perfect
