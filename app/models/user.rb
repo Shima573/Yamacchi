@@ -18,11 +18,11 @@ class User < ApplicationRecord
   #お気に入り関連
  #　登録する
   def favorite(mountain)
-        favorite_mountains << mountain
+        favorite_mountains << mountain 
   end
   # 解除する
   def unfavorite(mountain)
-        favorites.find_by(mountain_id: mountain.id)&.destroy
+        favorites.where(mountain_id: mountain.id).delete_all
   end
   # 状態を確認する
   def favorited?(mountain)

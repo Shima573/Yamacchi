@@ -1,9 +1,18 @@
-<div class="">
-    <% if favorite_ids.include?(mountain.id) %>
+<div class="w-15 h-15 border-2 border-slate-200 rounded-xl shadow-sm ">
+    <% if is_favorited %>
     <!-- 登録済み -->
-    <%= button_to "❤️", mountain_favorite_path(mountain), method: :delete, class: 'link' %>
+    <%= button_to  mountain_favorite_path(mountain),
+    method: :delete,
+    data: { turbo_submitting_with: "❤️" },
+    class: 'link favorite-btn-reset' do%>
+    <%= image_tag "sample/heart.png"%>
+    <% end %>
     <% else %>
     <!-- 未登録 -->
-    <%= button_to "🩶", mountain_favorite_path(mountain), class: 'link' %>
+    <%= button_to mountain_favorite_path(mountain),
+    data: { turbo_submitting_with: "🩶" },
+    class: 'link favorite-btn-reset' do%>
+    <%= image_tag "sample/gheart.png"%>
+    <% end %>
     <% end %>
 </div>

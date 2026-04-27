@@ -133,3 +133,7 @@ html {
   .box2{
     @apply px-4 py-2 bg-primary-30 w-fit rounded-3xl shadow-sm
   }
+
+  .favorite-btn-reset{
+    @apply w-full h-full cursor-pointer flex items-center justify-center
+  }
