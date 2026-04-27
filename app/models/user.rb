@@ -15,10 +15,10 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  #お気に入り関連
- #　登録する
+  # お気に入り関連
+  # 　登録する
   def favorite(mountain)
-        favorite_mountains << mountain 
+        favorite_mountains << mountain
   end
   # 解除する
   def unfavorite(mountain)
@@ -28,7 +28,6 @@ class User < ApplicationRecord
   def favorited?(mountain)
         favorites.exists?(mountain_id: mountain.id)
   end
-
 
   # ファイルの種類とサイズのバリデーション（gem ActiveStorage Validationを使用）
   ACCEPTED_CONTENT_TYPES = %w[image/jpeg image/png image/gif image/webp].freeze

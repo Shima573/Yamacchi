@@ -13,6 +13,7 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find(params[:id])
+    @is_favorited = current_user.favorited?(@mountain)
     @diagnosis = current_user.diagnoses.last
   end
 end
