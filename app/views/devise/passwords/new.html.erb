@@ -1,16 +1,18 @@
 <div class="min-h-screen">
     <div class="cover">
-
         <div class="box px-6 py-9 rounded-3xl max-w-xl mx-auto">
             <div class="border-3 border-primary-50 rounded-full w-fit mx-auto bg-primary-70/10">
-              <%= image_tag "sample/key_icon.png", class: "w-26 h-26" %>
+                <%= image_tag "sample/key_icon.png", class: "w-26 h-26" %>
             </div>
             <div class="text-center text-black font-mincho py-2">
                 <h2 class="text-2xl">パスワードをお忘れですか？</h2>
                 <p class="text-xs pt-2">ご登録のメールアドレスを入力してください。</p>
             </div>
+            <%# エラーメッセージ %>
+            <div class="text-center text-red-500">
+                <%= render "devise/shared/error_messages", resource: resource %>
+            </div>
             <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="text-field pb-6">
                 <p><%= f.label :email %></p>

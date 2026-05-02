@@ -9,6 +9,7 @@ ja:
         remember_me: "ログインを記憶"
         avatar: "アイコン画像"
         prefecture: "居住地の都道府県"
+        new_password: "新しいパスワード"
   devise:
     confirmations:
       confirmed: "メールアドレスの確認が完了しました。"
