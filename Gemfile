@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.3"
 # Railsの依存関係で入るminitestが6系だとエラーになるため、ここで5系に固定
-gem "minitest", "~> 5.0", "< 6.0"
+gem "minitest", "~> 6.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
