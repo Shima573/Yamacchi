@@ -77,7 +77,7 @@ config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 # Disable caching for Action Mailer templates even if Action Controller
 # caching is enabled.
 # 本番環境のホスト名を指定（自身のドメインに書き換えてください）
-config.action_mailer.default_url_options = { host: "your-app-domain.com", protocol: "https" }
+config.action_mailer.default_url_options = { host: "yamatchapp.com", protocol: "https" }
 
 # Resendを使用するための設定
 config.action_mailer.delivery_method = :resend
