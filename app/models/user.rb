@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_mountains, through: :favorites, source: :mountain
+  has_many :activity_records, dependent: :destroy
 
   # 名前を必須にし、50文字以内にする
   validates :name, presence: true, length: { maximum: 50 }

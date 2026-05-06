@@ -4,6 +4,7 @@ class Mountain < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+  has_many :activity_records, dependent: :destroy
 
   enum :raw_technical_grade, { A: 0, B: 1, C: 2, D: 3, E: 4 }, prefix: :grade
 
