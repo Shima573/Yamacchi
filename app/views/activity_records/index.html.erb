@@ -1,0 +1,6 @@
+<div class="min-h-screen">
+    <% @activity_records.each do |activity_record| %>
+    <p><%= activity_record.title %></p>
+    <%= activity_record.climbed_at %>
+    <% end %>
+</div>
